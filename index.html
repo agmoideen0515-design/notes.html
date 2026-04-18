@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>മദ്രസ നോട്ട്ബുക്ക് - വരികളില്ലാത്തത്</title>
+    <title>മദ്രസ നോട്ട്</title>
     <style>
-        /* അറബി അക്ഷരങ്ങൾ ഭംഗിയായി വരാൻ */
-        @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
 
         body {
-            background-color: #f0f0f0;
+            background-color: #f4f4f4;
             margin: 0;
-            padding: 10px;
+            padding: 5px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -19,27 +18,38 @@
 
         .notebook-page {
             background-color: white;
-            width: 95%;
+            width: 98%;
             max-width: 210mm;
             min-height: 297mm;
-            padding: 50px 0;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
             position: relative;
             box-sizing: border-box;
-            /* വലതുവശത്തെ ചുവന്ന മാർജിൻ */
-            border-right: 5px solid #ff4d4d;
+            /* വലതുവശത്തെ ചുവന്ന മാർജിൻ ലൈൻ */
+            border-right: 60px solid white;
+            padding-top: 40px;
+        }
+
+        /* മാർജിൻ ലൈൻ വരയ്ക്കാൻ */
+        .notebook-page::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 58px;
+            bottom: 0;
+            width: 2px;
+            background-color: #ff4d4d;
         }
 
         .header-section {
             display: flex;
             justify-content: space-between;
-            padding: 0 30px 20px 80px;
+            align-items: center;
+            padding: 0 10px 10px 60px;
             margin-bottom: 20px;
-            border-bottom: 1px solid #eee;
         }
 
         .lesson-title {
-            font-size: 24pt;
+            font-size: 20pt;
             flex-grow: 1;
             outline: none;
             text-align: right;
@@ -47,56 +57,47 @@
         }
 
         .date-section {
-            font-size: 16pt;
+            font-size: 14pt;
             outline: none;
-            font-family: 'Arial', sans-serif;
+            text-align: left;
         }
 
-        /* എഴുതുന്ന ഭാഗം */
+        /* ടൈപ്പ് ചെയ്യുന്ന ഭാഗം */
         .content-area {
-            line-height: 2.5; /* വരികൾ തമ്മിലുള്ള അകലം */
+            line-height: 2.2; 
             outline: none;
             min-height: 900px;
-            font-size: 26pt; /* അക്ഷരങ്ങളുടെ വലിപ്പം */
+            font-size: 24pt;
             font-family: 'Amiri', serif;
             text-align: right;
-            padding: 0 20px 0 80px;
+            /* മാർജിന് ഇടത്തോട്ട് എഴുത്ത് വരാൻ */
+            padding: 0 10px 0 60px;
             color: #222;
             word-wrap: break-word;
-            white-space: pre-wrap;
         }
 
-        /* ശൂന്യമായിരിക്കുമ്പോൾ കാണാൻ */
+        /* ക്ലിക്ക് ചെയ്യുമ്പോൾ മാറാൻ */
         .content-area:empty:before {
-            content: "ഇവിടെ എഴുതി തുടങ്ങാം...";
-            color: #ddd;
+            content: "ഇവിടെ ടൈപ്പ് ചെയ്യുക...";
+            color: #ccc;
             font-family: sans-serif;
-            font-size: 18pt;
+            font-size: 16pt;
         }
 
-        .controls {
-            margin-bottom: 15px;
-        }
-
+        .controls { margin: 10px 0; }
         button {
-            padding: 12px 30px;
-            background-color: #007bff;
+            padding: 10px 20px;
+            background-color: #28a745;
             color: white;
             border: none;
             border-radius: 5px;
             font-weight: bold;
-            cursor: pointer;
-            font-size: 16px;
         }
 
         @media print {
             .controls { display: none; }
             body { background: white; padding: 0; }
-            .notebook-page { 
-                width: 100%; 
-                box-shadow: none; 
-                border-right: 5px solid #ff4d4d !important;
-            }
+            .notebook-page { width: 100%; box-shadow: none; }
         }
     </style>
 </head>
@@ -108,7 +109,7 @@
 
     <div class="notebook-page">
         <div class="header-section">
-            <div class="lesson-title" contenteditable="true">................................................</div>
+            <div class="lesson-title" contenteditable="true">..........................................</div>
             <div class="date-section" contenteditable="true">തിയ്യതി: ..../..../2026</div>
         </div>
 
