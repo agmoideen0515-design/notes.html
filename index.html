@@ -5,83 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>മദ്രസ നോട്ട്ബുക്ക്</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+
         body {
             background-color: #f0f0f0;
-            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 10px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 10px;
-            margin: 0;
         }
+
         .notebook-page {
             background-color: white;
-            width: 95%; /* ഫോണിൽ കൃത്യമായി വരാൻ */
+            width: 95%;
             max-width: 210mm;
             min-height: 297mm;
             padding: 40px 0;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
             position: relative;
             box-sizing: border-box;
-            border-right: 4px solid #ff4d4d; /* ചുവന്ന മാർജിൻ */
+            /* വലതുവശത്തെ മാർജിൻ - നമ്പറുകൾ ഇടാൻ 60px സ്ഥലം */
+            border-right: 50px solid transparent; 
+            border-image: linear-gradient(to bottom, #ff4d4d, #ff4d4d) 1 100%;
+            border-right-style: solid;
+            border-right-width: 60px;
+            /* മാർജിൻ ലൈൻ */
+            background-image: 
+                linear-gradient(to right, transparent 59px, #ff4d4d 59px, #ff4d4d 61px, transparent 61px);
+            background-attachment: local;
         }
-        /* വരകൾ വരിയുടെ താഴെ ഭാഗത്ത് വരാൻ */
-        .content-area {
-            line-height: 2.2; /* വരികൾക്കിടയിലെ അകലം */
-            background-image: linear-gradient(transparent 95%, #d1d1d1 5%);
-            background-size: 100% 2.2em;
-            outline: none;
-            min-height: 900px;
-            font-size: 22pt; /* അക്ഷരങ്ങളുടെ വലിപ്പം */
-            text-align: right;
-            padding-right: 15px;
-            padding-left: 15px;
-            color: #222;
-            word-wrap: break-word;
-        }
-        /* ക്ലിക്ക് ചെയ്യുമ്പോൾ ടെക്സ്റ്റ് മാറാൻ */
-        .content-area:empty:before {
-            content: "ഇവിടെ ടൈപ്പ് ചെയ്യുക...";
-            color: #ccc;
-        }
+
         .header-section {
             display: flex;
             justify-content: space-between;
-            padding: 0 20px;
-            margin-bottom: 20px;
+            padding: 0 20px 10px 80px;
+            margin-bottom: 10px;
         }
+
         .lesson-title {
-            font-size: 20pt;
+            font-size: 22pt;
             flex-grow: 1;
-            border-bottom: 1px dashed #999;
             outline: none;
+            text-align: right;
         }
+
         .date-section {
-            font-size: 14pt;
-            min-width: 120px;
-            text-align: left;
+            font-size: 16pt;
             outline: none;
         }
+
+        /* പ്രധാന എഴുത്ത് ഭാഗം */
+        .content-area {
+            line-height: 2.2em; /* വരികൾക്കിടയിലെ അകലം */
+            /* അക്ഷരങ്ങൾ വരിക്ക് ഇടയിലൂടെ വരാൻ ബാക്ക്ഗ്രൗണ്ട് മാറ്റം */
+            background-image: linear-gradient(transparent 1.9em, #d1d1d1 1.9em, #d1d1d1 2.0em, transparent 2.0em);
+            background-size: 100% 2.2em;
+            outline: none;
+            min-height: 900px;
+            font-size: 24pt;
+            font-family: 'Amiri', serif; /* അറബിക്ക് അനുയോജ്യമായ ഫോണ്ട് */
+            text-align: right;
+            padding: 0 15px 0 80px;
+            color: #222;
+            word-wrap: break-word;
+        }
+
+        /* ടൈപ്പ് ചെയ്യാൻ തുടങ്ങുമ്പോൾ ഗൈഡ് ടെക്സ്റ്റ് മാറാൻ */
+        .content-area:empty:before {
+            content: "ഇവിടെ ടൈപ്പ് ചെയ്യുക (റ, സ, വ അക്ഷരങ്ങൾ വരിക്ക് താഴേക്ക് വരും)...";
+            color: #ccc;
+            font-size: 16pt;
+        }
+
         .controls {
             margin-bottom: 15px;
-            width: 100%;
-            text-align: center;
         }
+
         button {
-            padding: 10px 20px;
+            padding: 10px 25px;
             background-color: #28a745;
             color: white;
             border: none;
             border-radius: 5px;
             font-weight: bold;
+            cursor: pointer;
         }
+
         @media print {
             .controls { display: none; }
             body { background: white; padding: 0; }
             .notebook-page { 
                 width: 100%; 
                 box-shadow: none; 
-                border-right: 4px solid #ff4d4d; 
+                border-right: 60px solid #ff4d4d !important;
+                -webkit-print-color-adjust: exact;
             }
         }
     </style>
@@ -94,7 +112,7 @@
 
     <div class="notebook-page">
         <div class="header-section">
-            <div class="lesson-title" contenteditable="true" data-placeholder="പാഠം...">....................................</div>
+            <div class="lesson-title" contenteditable="true">....................................</div>
             <div class="date-section" contenteditable="true">തിയ്യതി: ..../..../2026</div>
         </div>
 
